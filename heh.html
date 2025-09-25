@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bóng nhảy bật bật</title>
+  <style>
+    body {
+      margin: 0;
+      background: #222;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .ball {
+      width: 50px;
+      height: 50px;
+      background: gold;
+      border-radius: 50%;
+      box-shadow: 0 0 20px gold;
+      position: relative;
+      animation: bounce 1s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        top: 0;
+        animation-timing-function: ease-in;
+      }
+      50% {
+        top: 300px;
+        animation-timing-function: ease-out;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ball" id="ball"></div>
+
+  <script>
+    const ball = document.getElementById("ball");
+    let speed = 1;
+
+    ball.addEventListener("click", () => {
+      speed = Math.max(0.2, speed - 0.2); // Giảm thời gian, tăng tốc
+      ball.style.animationDuration = speed + "s";
+    });
+  </script>
+
+</body>
+</html>
