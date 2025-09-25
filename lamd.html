@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Đèn học có dây kéo</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background-color: #111;
+      height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      transition: background-color 0.5s ease;
+    }
+
+    .lamp {
+      position: relative;
+      margin-top: 100px;
+    }
+
+    .bulb {
+      width: 100px;
+      height: 100px;
+      background: #555;
+      border-radius: 50%;
+      box-shadow: 0 0 0px yellow;
+      transition: box-shadow 0.5s, background 0.5s;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cord {
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      width: 4px;
+      height: 100px;
+      background: #aaa;
+      transform: translateX(-50%);
+    }
+
+    .switch {
+      width: 20px;
+      height: 20px;
+      background: #eee;
+      border-radius: 50%;
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .light {
+      position: absolute;
+      top: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 80px solid transparent;
+      border-right: 80px solid transparent;
+      border-top: 120px solid rgba(255, 255, 150, 0);
+      transition: border-top-color 0.5s ease;
+      z-index: 1;
+    }
+
+    .on .bulb {
+      background: #ffeb3b;
+      box-shadow: 0 0 30px 10px yellow;
+    }
+
+    .on .light {
+      border-top-color: rgba(255, 255, 150, 0.4);
+    }
+
+    .on body {
+      background-color: #eee;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="lamp" id="lamp">
+    <div class="cord">
+      <div class="switch" id="pull"></div>
+    </div>
+    <div class="bulb"></div>
+    <div class="light"></div>
+  </div>
+
+  <script>
+    const lamp = document.getElementById("lamp");
+    const pull = document.getElementById("pull");
+    const body = document.body;
+    let isOn = false;
+
+    pull.addEventListener("click", () => {
+      isOn = !isOn;
+      lamp.classList.toggle("on", isOn);
+      body.style.backgroundColor = isOn ? "#fef7dc" : "#111";
+    });
+  </script>
+
+</body>
+</html>
